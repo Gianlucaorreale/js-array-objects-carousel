@@ -48,3 +48,48 @@ const images = [
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
     },
   ];
+
+
+let courrentActiveIndex = 0;
+const gallery = document.getElementById('gallery');
+let cards = '';
+
+for( let i = 0; i < images.length; i++){
+    cards += `<div>
+                 <h2>${images[i].title}</h2>
+                 <p>${images[i].description}</p>
+                 <img src="${images[i].url}" alt="svezia">
+              </div> `
+}
+
+gallery.innerHTML = cards;
+
+
+const photo = document.getElementsByClassName('photo');
+photo [courrentActiveIndex].classList.add('active')
+
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+
+nextButton.addEventListener('click' , function(){
+    photo[courrentActiveIndex].classList.remove('active');
+    courrentActiveIndex++;
+
+    if (courrentActiveIndex === photo.length){
+        courrentActiveIndex = 0;
+    }
+
+    photo[courrentActiveIndex].classList.add('active');
+})
+
+
+prevButton.addEventListener('click' , function(){
+    photo[courrentActiveIndex].classList.remove('active');
+    courrentActiveIndex--;
+
+    if (courrentActiveIndex === photo.length){
+        courrentActiveIndex = 0
+    }
+
+    photo[courrentActiveIndex].classList.add('active');
+})
